@@ -15,7 +15,7 @@ import java.util.Date;
 public class AddTest {
     //given
     private <SomeType> void test(SomeType... valuesToBePopulatedWith) {
-        MyArrayList<SomeType> myList = new MyArrayList<>(valuesToBePopulatedWith);
+        MyArrayList<SomeType> myList = new MyArrayList<>();
         MyCollectionInterface<SomeType> myCollection = (MyCollectionInterface<SomeType>) myList;
 
         for (SomeType someValue : valuesToBePopulatedWith) {
