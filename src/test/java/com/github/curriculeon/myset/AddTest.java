@@ -15,7 +15,7 @@ import java.util.Date;
 public class AddTest {
     //given
     private <SomeType> void test(SomeType[] valuesToBePopulatedWith, int expectedSize) {
-        MySet<SomeType> myList = new MySet<>(valuesToBePopulatedWith);
+        MySet<SomeType> myList = new MySet<>();
         MyCollectionInterface<SomeType> myCollection = (MyCollectionInterface<SomeType>) myList;
 
         for (SomeType someValue : valuesToBePopulatedWith) {
