@@ -20,7 +20,7 @@ public class RemoveByIndex {
 
         // given elements have been added to collection
         for (SomeType someValue : valuesToBePopulatedWith) {
-            myCollection.add(someValue);
+            //myCollection.add(someValue);
             Boolean myCollectionContainsValue = myCollection.contains(someValue);
             Assert.assertTrue(myCollectionContainsValue);
         }
