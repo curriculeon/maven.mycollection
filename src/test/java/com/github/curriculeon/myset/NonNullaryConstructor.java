@@ -18,7 +18,6 @@ public class NonNullaryConstructor {
     private <SomeType> void test(SomeType... valuesToBePopulatedWith) {
         MySet<SomeType> myList = new MySet<>(valuesToBePopulatedWith);
         MyCollectionInterface<SomeType> myCollection = (MyCollectionInterface<SomeType>) myList;
-
         for (SomeType someValue : valuesToBePopulatedWith) {
             Boolean myCollectionContainsValue = myCollection.contains(someValue);
             Assert.assertTrue(myCollectionContainsValue);

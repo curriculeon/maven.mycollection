@@ -15,9 +15,10 @@ import java.util.Date;
 public class AddTest {
     //given
     private <SomeType> void test(SomeType... valuesToBePopulatedWith) {
-        MyArrayList<SomeType> myList = new MyArrayList<>(valuesToBePopulatedWith);
+        MyArrayList<SomeType> myList = new MyArrayList<>();
         MyCollectionInterface<SomeType> myCollection = (MyCollectionInterface<SomeType>) myList;
 
+        Assert.assertEquals(0, myList.size(), 0);
         for (SomeType someValue : valuesToBePopulatedWith) {
             // when
             myCollection.add(someValue);
