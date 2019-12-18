@@ -18,10 +18,10 @@ public class NullaryConstructor {
     @Test
     public void testPolymorphism() {
         //given
-        MyArrayList<?> myList = new MyArrayList<>();
+        MySet<?> myList = new MySet<>();
 
         // when
-        Boolean isInstanceOfMySet = ((MySet)(Object)myList) instanceof MySet;
+        Boolean isInstanceOfMySet = (Object)myList instanceof MySet;
         Boolean isInstanceOfList = myList instanceof List;
         Boolean isInstanceOfCollection = myList instanceof Collection;
         Boolean isInstanceOfIterable = myList instanceof Iterable;

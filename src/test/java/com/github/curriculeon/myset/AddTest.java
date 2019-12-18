@@ -17,7 +17,7 @@ public class AddTest {
     private <SomeType> void test(SomeType[] valuesToBePopulatedWith, int expectedSize) {
         MySet<SomeType> myList = new MySet<>(valuesToBePopulatedWith);
         MyCollectionInterface<SomeType> myCollection = (MyCollectionInterface<SomeType>) myList;
-
+        System.out.println(myCollection.size());
         for (SomeType someValue : valuesToBePopulatedWith) {
             // when
             myCollection.add(someValue);
