@@ -39,8 +39,14 @@ public class RemoveByIndex {
         Assert.assertEquals(expectedPostRemoveLength, actualPostRemoveLength);
         for (int currentIndex = 0; currentIndex < expectedElementSequence.length; currentIndex++) {
             SomeType expectedElement = expectedElementSequence[currentIndex];
-            SomeType actualElement = myCollection.get(currentIndex);
-            Assert.assertEquals(expectedElement, actualElement);
+            try {
+                SomeType actualElement = myCollection.get(currentIndex);
+                Assert.assertEquals(expectedElement, actualElement);
+            }catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+
         }
     }
 

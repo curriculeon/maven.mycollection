@@ -20,17 +20,25 @@ public class GetTest {
         MySet<SomeType> myList = new MySet<>(valuesToBePopulatedWith);
         MyCollectionInterface<SomeType> myCollection = (MyCollectionInterface<SomeType>) myList;
 
+
         for (int currentIndex = 0; currentIndex < valuesToBePopulatedWith.length; currentIndex++) {
             SomeType expected = valuesToBePopulatedWith[currentIndex];
+           // System.out.println(expected);
             myCollection.add(expected);
             Boolean hasBeenAdded = myCollection.contains(expected);
             Assert.assertTrue(hasBeenAdded);
 
-            // when
-            SomeType actual = myCollection.get(currentIndex);
+            try {
+                // when
+                SomeType actual = myCollection.get(currentIndex);
+                //System.out.println(currentIndex + " " + actual);
 
-            // then
-            Assert.assertEquals(expected, actual);
+                // then
+                Assert.assertEquals(expected, actual);
+            }catch (Exception e)
+            {
+                e.printStackTrace();
+            }
         }
     }
 
