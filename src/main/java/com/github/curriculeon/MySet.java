@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-public class MySet<SomeType> implements MyCollectionInterface{
+public class MySet<SomeType> implements MyCollectionInterface, Iterable{
     private Set<SomeType> set = new HashSet<>();
     public MySet() {
     }
@@ -26,6 +26,8 @@ public class MySet<SomeType> implements MyCollectionInterface{
 
     @Override
     public void remove(int indexOfObjectToRemove) {
+
+        Iterator iterator = set.iterator();
         int counter = 0;
         if (iterator().hasNext()) do {
             if (counter == indexOfObjectToRemove)
@@ -41,9 +43,6 @@ public class MySet<SomeType> implements MyCollectionInterface{
         Object result = null;
         boolean finished = false;
         Iterator iterator = set.iterator();
-
-
-
 
         int counter = 0;
         while (iterator.hasNext() && (counter <= indexOfElement))
@@ -73,21 +72,4 @@ public class MySet<SomeType> implements MyCollectionInterface{
         Iterator iterator = set.iterator();
         return iterator;
     }
-
-   /* public static void main(String [] args)
-    {
-        String [] a = new String[]{"1", "2", "3", "4", "5" };
-
-        MySet<String> set = new MySet<>();
-
-        for (int i= 0; i < a.length; i++)
-            set.add(a[i]);
-        Iterator iterator = set.iterator();
-        try {
-            System.out.println(set.get(2));
-        }catch (Exception e)
-        {e.printStackTrace();}
-        /*while(iterator.hasNext())
-            System.out.println(iterator.next());
-    }*/
 }
