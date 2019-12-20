@@ -25,11 +25,15 @@ public class GetTest {
             Boolean hasBeenAdded = myCollection.contains(expected);
             Assert.assertTrue(hasBeenAdded);
 
-            // when
-            SomeType actual = myCollection.get(currentIndex);
-
-            // then
-            Assert.assertEquals(expected, actual);
+            try {
+                // when
+                SomeType actual = myCollection.get(currentIndex);
+                // then
+                Assert.assertEquals(expected, actual);
+            }catch (Exception e)
+            {
+                e.printStackTrace();
+            }
         }
     }
 

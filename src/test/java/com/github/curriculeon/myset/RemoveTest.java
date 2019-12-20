@@ -5,6 +5,7 @@ import com.github.curriculeon.MyCollectionInterface;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -19,7 +20,7 @@ public class RemoveTest {
         MyCollectionInterface<SomeType> myCollection = (MyCollectionInterface<SomeType>) myList;
 
         for (SomeType someValue : valuesToBePopulatedWith) {
-            myCollection.add(someValue);
+            //myCollection.add(someValue);
             Boolean myCollectionContainsValue = myCollection.contains(someValue);
             Assert.assertTrue(myCollectionContainsValue);
 
@@ -45,6 +46,6 @@ public class RemoveTest {
 
     @Test
     public void test2() {
-        test(new Date(), new Date(), new Date());
+        test(LocalDate.now(), LocalDate.now().minusDays(1), LocalDate.now().minusDays(2));
     }
 }

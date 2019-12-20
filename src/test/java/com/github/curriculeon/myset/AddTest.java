@@ -54,11 +54,11 @@ public class AddTest {
 
     @Test
     public void test4() {
-        test(new Date[]{new Date(), new Date(), new Date()}, 3);
+        test(new Date[]{new Date(), new Date(), new Date()}, 1);
     }
 
     @Test
     public void test5() {
-        test(new Date[]{new Date(), new Date(), new Date()}, 3);
+        test(new Date[]{new Date(), new Date(), new Date()}, 1);
     }
 }

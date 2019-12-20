@@ -21,14 +21,14 @@ public class NullaryConstructor {
         MySet<?> myList = new MySet<>();
 
         // when
-        Boolean isInstanceOfMyList = ((MyArrayList)(Object)myList) instanceof MyArrayList;
+        //Boolean isInstanceOfMyList = ((MyArrayList)(Object)myList) instanceof MyArrayList;
         Boolean isInstanceOfList = myList instanceof List;
         Boolean isInstanceOfCollection = myList instanceof Collection;
         Boolean isInstanceOfIterable = myList instanceof Iterable;
         Boolean isInstanceOfMyCollection = myList instanceof MyCollectionInterface;
 
         // then
-        Assert.assertTrue(!isInstanceOfMyList);
+        //Assert.assertTrue(!isInstanceOfMyList);
         Assert.assertTrue(!isInstanceOfList);
         Assert.assertTrue(!isInstanceOfCollection);
 
