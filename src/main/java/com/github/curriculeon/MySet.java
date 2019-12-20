@@ -1,12 +1,9 @@
 package com.github.curriculeon;
 
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
+import java.util.*;
 
 public class MySet<SomeType> implements MyCollectionInterface, Iterable{
-    private Set<SomeType> set = new HashSet<>();
+    private Set<SomeType> set = new LinkedHashSet<>();
     public MySet() {
     }
 
@@ -29,13 +26,14 @@ public class MySet<SomeType> implements MyCollectionInterface, Iterable{
 
         Iterator iterator = set.iterator();
         int counter = 0;
-        if (iterator().hasNext()) do {
-            if (counter == indexOfObjectToRemove)
-                remove(iterator().next());
+          while (iterator.hasNext()){
+            if (counter == indexOfObjectToRemove) {
+                remove(iterator.next());
+                break;
+            }
+            iterator.next();
             counter++;
-        } while (iterator().hasNext());
-
-
+          }
     }
 
     @Override

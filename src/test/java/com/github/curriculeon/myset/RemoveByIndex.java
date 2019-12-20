@@ -6,6 +6,8 @@ import com.github.curriculeon.MySet;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.time.LocalDate;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -21,7 +23,8 @@ public class RemoveByIndex {
 
         // given elements have been added to collection
         for (SomeType someValue : valuesToBePopulatedWith) {
-            myCollection.add(someValue);
+            //myCollection.add(someValue);
+            System.out.println(someValue);
             Boolean myCollectionContainsValue = myCollection.contains(someValue);
             Assert.assertTrue(myCollectionContainsValue);
         }
@@ -70,12 +73,14 @@ public class RemoveByIndex {
 
     @Test
     public void test2() {
-        Date d1 = new Date();
-        Date d2 = new Date();
-        Date d3 = new Date();
-        Date[] valuesToPopulateCollection = new Date[]{d1,d2,d3};
-        Date[] expectedElementSequence = new Date[]{d1,d2};
-        int indexOfElementToRemove = 2;
+        final Calendar cal = Calendar.getInstance();
+        LocalDate d1 = LocalDate.now();
+        LocalDate d2 = LocalDate.now().minusDays(1);
+        LocalDate d3 = LocalDate.now().minusDays(2);
+        LocalDate d4 = LocalDate.now().minusDays(3);
+        LocalDate[] valuesToPopulateCollection = new LocalDate[]{d1,d2,d3,d4};
+        LocalDate[] expectedElementSequence = new LocalDate[]{d1,d2,d3};
+        int indexOfElementToRemove = 3;
         test(indexOfElementToRemove, valuesToPopulateCollection, expectedElementSequence);
     }
 }
