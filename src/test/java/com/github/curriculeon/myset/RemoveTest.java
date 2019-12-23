@@ -2,6 +2,7 @@ package com.github.curriculeon.myset;
 
 import com.github.curriculeon.MyArrayList;
 import com.github.curriculeon.MyCollectionInterface;
+import com.github.curriculeon.MySet;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -16,7 +17,7 @@ public class RemoveTest {
     //given
     private <SomeType> void test(SomeType... valuesToBePopulatedWith) {
         MyArrayList<SomeType> myList = new MyArrayList<>(valuesToBePopulatedWith);
-        MyCollectionInterface<SomeType> myCollection = (MyCollectionInterface<SomeType>) myList;
+        MyCollectionInterface<SomeType> myCollection = (MyCollectionInterface<SomeType>) new MySet<>();
 
         for (SomeType someValue : valuesToBePopulatedWith) {
             myCollection.add(someValue);

@@ -16,7 +16,7 @@ public class RemoveTest {
     //given
     private <SomeType> void test(SomeType... valuesToBePopulatedWith) {
         MyArrayList<SomeType> myList = new MyArrayList<>(valuesToBePopulatedWith);
-        MyCollectionInterface<SomeType> myCollection = (MyCollectionInterface<SomeType>) myList;
+        MyCollectionInterface<SomeType> myCollection = (MyCollectionInterface<SomeType>) new MyArrayList<>();
 
         for (SomeType someValue : valuesToBePopulatedWith) {
             myCollection.add(someValue);

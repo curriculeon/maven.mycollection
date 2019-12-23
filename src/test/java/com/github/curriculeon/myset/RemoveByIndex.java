@@ -20,26 +20,34 @@ public class RemoveByIndex {
         MyCollectionInterface<SomeType> myCollection = (MyCollectionInterface<SomeType>) myList;
 
         // given elements have been added to collection
-        for (SomeType someValue : valuesToBePopulatedWith) {
+        /*for (SomeType someValue : valuesToBePopulatedWith) {
             myCollection.add(someValue);
             Boolean myCollectionContainsValue = myCollection.contains(someValue);
             Assert.assertTrue(myCollectionContainsValue);
-        }
+        }*/
         Integer preRemoveLength = myCollection.size(); // get size of collection
-        Integer expectedPreRemoveLength = valuesToBePopulatedWith.length;
-        Assert.assertEquals(expectedPreRemoveLength, preRemoveLength); // ensure length is correct
-        Integer expectedPostRemoveLength = preRemoveLength - 1;// get the expected post-removal length
+       // Integer expectedPreRemoveLength = valuesToBePopulatedWith.length;
+       // Assert.assertEquals(expectedPreRemoveLength, preRemoveLength); // ensure length is correct before removal
 
         // when
+        Integer expectedPostRemoveLength; // get the expected post-removal length
+        if (indexOfElementToRemove < myCollection.size()) {
+            expectedPostRemoveLength = preRemoveLength - 1;// when requested to remove in the range of collection size
+        } else {
+            expectedPostRemoveLength = preRemoveLength; // no deletion when tried to remove out of the index of the collection
+        }
         myCollection.remove(indexOfElementToRemove);
-        Integer postRemoveLength = myCollection.size(); // get size of collection
-        Integer actualPostRemoveLength = postRemoveLength; // get the actual post-removal length
-
-        // then
+        Integer actualPostRemoveLength = myCollection.size(); // get size of collection
+      //  Integer actualPostRemoveLength = postRemoveLength; // get the actual post-removal length
         Assert.assertEquals(expectedPostRemoveLength, actualPostRemoveLength);
+System.out.println(expectedPostRemoveLength);
+        // then
         for (int currentIndex = 0; currentIndex < expectedElementSequence.length; currentIndex++) {
             SomeType expectedElement = expectedElementSequence[currentIndex];
             SomeType actualElement = myCollection.get(currentIndex);
+            System.out.println(expectedElement+" "+actualElement);
+
+            //System.out.println(expectedElement+" "+ actualElement);
             Assert.assertEquals(expectedElement, actualElement);
         }
     }
@@ -68,7 +76,7 @@ public class RemoveByIndex {
         Date d2 = new Date();
         Date d3 = new Date();
         Date[] valuesToPopulateCollection = new Date[]{d1,d2,d3};
-        Date[] expectedElementSequence = new Date[]{d1,d2};
+        Date[] expectedElementSequence = new Date[]{d1};
         int indexOfElementToRemove = 2;
         test(indexOfElementToRemove, valuesToPopulateCollection, expectedElementSequence);
     }

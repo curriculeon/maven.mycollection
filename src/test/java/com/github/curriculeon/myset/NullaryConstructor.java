@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author leonhunter
@@ -20,15 +21,15 @@ public class NullaryConstructor {
         //given
         MySet<?> myList = new MySet<>();
 
-        // when
-        Boolean isInstanceOfMyList = ((MyArrayList)(Object)myList) instanceof MyArrayList;
-        Boolean isInstanceOfList = myList instanceof List;
+        /* when */
+        Boolean isInstanceOfMyList = myList instanceof MySet;
+        Boolean isInstanceOfList = myList instanceof Set;
         Boolean isInstanceOfCollection = myList instanceof Collection;
         Boolean isInstanceOfIterable = myList instanceof Iterable;
         Boolean isInstanceOfMyCollection = myList instanceof MyCollectionInterface;
 
         // then
-        Assert.assertTrue(!isInstanceOfMyList);
+        //Assert.assertTrue(!isInstanceOfMyList);
         Assert.assertTrue(!isInstanceOfList);
         Assert.assertTrue(!isInstanceOfCollection);
 
