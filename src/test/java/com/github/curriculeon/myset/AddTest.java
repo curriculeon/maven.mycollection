@@ -16,7 +16,7 @@ public class AddTest {
     //given
     private <SomeType> void test(SomeType[] valuesToBePopulatedWith, int expectedSize) {
         MySet<SomeType> myList = new MySet<>(valuesToBePopulatedWith);
-        MyCollectionInterface<SomeType> myCollection = (MyCollectionInterface<SomeType>) myList;
+        MyCollectionInterface<SomeType> myCollection = (MyCollectionInterface<SomeType>) new MySet<>();
 
         for (SomeType someValue : valuesToBePopulatedWith) {
             // when
@@ -54,11 +54,11 @@ public class AddTest {
 
     @Test
     public void test4() {
-        test(new Date[]{new Date(), new Date(), new Date()}, 3);
+        test(new Date[]{new Date(), new Date(), new Date()}, 1);
     }
 
     @Test
     public void test5() {
-        test(new Date[]{new Date(), new Date(), new Date()}, 3);
+        test(new Date[]{new Date(), new Date(), new Date()}, 1);
     }
 }

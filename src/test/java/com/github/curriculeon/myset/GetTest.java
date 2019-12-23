@@ -6,6 +6,7 @@ import com.github.curriculeon.MySet;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 
@@ -17,20 +18,32 @@ import java.util.Date;
 public class GetTest {
     //given
     private <SomeType> void test(SomeType... valuesToBePopulatedWith) {
+        ArrayList<SomeType> newValuesToBePopulateWith = new ArrayList<>();
         MySet<SomeType> myList = new MySet<>(valuesToBePopulatedWith);
-        MyCollectionInterface<SomeType> myCollection = (MyCollectionInterface<SomeType>) myList;
+        MyCollectionInterface<SomeType> myCollection = new MySet<>();
 
         for (int currentIndex = 0; currentIndex < valuesToBePopulatedWith.length; currentIndex++) {
-            SomeType expected = valuesToBePopulatedWith[currentIndex];
-            myCollection.add(expected);
-            Boolean hasBeenAdded = myCollection.contains(expected);
-            Assert.assertTrue(hasBeenAdded);
+            // remove testing of duplicate items from valuesToBePopulatedWith
+            if (myCollection.contains(valuesToBePopulatedWith[currentIndex])) {
+                currentIndex++;
+            }
+            else {
+                //when
+                SomeType expected = valuesToBePopulatedWith[currentIndex];
+                myCollection.add(expected);
+                Boolean hasBeenAdded = myCollection.contains(expected);
+                Assert.assertTrue(hasBeenAdded);
+                SomeType actual = myCollection.get(currentIndex);
+
+                // then
+                Assert.assertEquals(expected, actual);
+            }
+
 
             // when
-            SomeType actual = myCollection.get(currentIndex);
+
 
             // then
-            Assert.assertEquals(expected, actual);
         }
     }
 
