@@ -4,40 +4,56 @@ package com.github.curriculeon;
 import java.util.*;
 
 public class MyMap<KeyType, ValueType> implements MyMapInterface{
-    Map<KeyType, ValueType> myMap;
+    MyArrayList<KeyValue<KeyType, ValueType>> myMap;
     public MyMap() {
-        myMap = new LinkedHashMap<>();
+        myMap = new MyArrayList<>();
     }
 
     public MyMap(List<KeyValue<KeyType, ValueType>> entries) {
-        myMap = new LinkedHashMap<>();
-        for (KeyValue<KeyType, ValueType> map : entries) {
-            myMap.put(map.getKey(), map.getValue());
-        }
+        myMap = (MyArrayList<KeyValue<KeyType, ValueType>>) entries;
     }
 
     @Override
     public void put(Object key, Object value) {
-        myMap.put((KeyType)key, (ValueType)value);
+        KeyValue<KeyType, ValueType> entry = new KeyValue((KeyType)key, (ValueType)value);
+        myMap.add(entry);
     }
 
     @Override
     public Object get(Object key) {
-        return myMap.get((KeyType)key);
+        for (int i=0; i< myMap.size(); i++) {
+            KeyValue<KeyType, ValueType> entry = myMap.get(i);
+            if (entry.getKey().equals((KeyType)key)) {
+                return (ValueType)entry.getValue();
+            }
+        }
+        return null;
     }
 
     @Override
     public Set getKeySet() {
-        return myMap.keySet();
+        Set<KeyType> keyset = new LinkedHashSet<>();
+        for (KeyValue<KeyType, ValueType> entry: myMap) {
+            keyset.add(entry.getKey());
+        }
+        return keyset;
     }
 
     @Override
     public List getValues() {
-        return (List) myMap.values();
+        List<ValueType> valueset = new ArrayList<>();
+        for (KeyValue<KeyType, ValueType> entry: myMap) {
+            valueset.add(entry.getValue());
+        }
+        return valueset;
     }
     @Override
     public Set<KeyValue> getKeyValues() {
-        return (Set)myMap.entrySet();
+        Set<KeyValue> keyValueSet = new LinkedHashSet<>();
+        for (KeyValue<KeyType, ValueType> entry: myMap) {
+            keyValueSet.add(entry);
+        }
+        return keyValueSet;
     }
 
     @Override
@@ -45,7 +61,7 @@ public class MyMap<KeyType, ValueType> implements MyMapInterface{
         Map<ValueType, KeyType> invertMap = new LinkedHashMap<>();
         MyMapInterface<ValueType, KeyType> myMapInterface = (MyMapInterface)invertMap;
 
-        for (Map.Entry<KeyType, ValueType> entry : myMap.entrySet()) {
+        for (KeyValue<KeyType, ValueType> entry: myMap) {
             myMapInterface.put(entry.getValue(), entry.getKey());
         }
         return myMapInterface;

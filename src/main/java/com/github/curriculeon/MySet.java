@@ -3,63 +3,44 @@ package com.github.curriculeon;
 
 import java.util.*;
 
-public class MySet<SomeType> implements MyCollectionInterface{
-    private Set<SomeType> mySet;
+public class MySet<SomeType> implements MyCollectionInterface<SomeType>{
+    private MyCollectionInterface<SomeType> mySet;
+
     public MySet() {
-        mySet = new LinkedHashSet<>();
+        mySet = new MyArrayList<>();
     }
 
     public MySet(SomeType[] valuesToBePopulatedWith) {
-        mySet = new LinkedHashSet<>();
-
-        for (SomeType item : valuesToBePopulatedWith) {
-            mySet.add(item);
+        mySet = new MyArrayList<>();
+        for(int i=0;i<valuesToBePopulatedWith.length;i++) {
+            mySet.add(valuesToBePopulatedWith[i]);
         }
     }
 
     @Override
-    public void add(Object objectToAdd) {
-        mySet.add((SomeType) objectToAdd);
+    public void add(SomeType objectToAdd) {
+        if(!mySet.contains(objectToAdd)) {
+            mySet.add(objectToAdd);
+        }
     }
 
     @Override
-    public void remove(Object objectToRemove) {
+    public void remove(SomeType objectToRemove) {
         mySet.remove(objectToRemove);
     }
 
     @Override
     public void remove(int indexOfObjectToRemove) {
-        if (indexOfObjectToRemove < mySet.size()) { // if indexOfObjectToRemvoe is greater than size, no deletion
-            int currentIndex = 0;
-            Iterator itr = mySet.iterator();
-            while (itr.hasNext()) {
-                itr.next();
-                if (currentIndex == indexOfObjectToRemove) {
-                    itr.remove();
-                    break;
-                }
-                currentIndex++;
-            }
-        }
+        mySet.remove(indexOfObjectToRemove);
     }
 
     @Override
-    public Object get(int indexOfElement) {
-        Iterator<SomeType> itr = mySet.iterator();
-        int currentIndex=0;
-
-        while (itr.hasNext()) {
-            if (currentIndex == indexOfElement) {
-                return itr.next();
-            }
-            itr.next();
-            currentIndex++;
-        }
-        return null;
+    public SomeType get(int indexOfElement) {
+        return mySet.get(indexOfElement);
     }
 
     @Override
-    public Boolean contains(Object objectToCheckFor) {
+    public Boolean contains(SomeType objectToCheckFor) {
         return mySet.contains(objectToCheckFor);
     }
 
@@ -69,7 +50,7 @@ public class MySet<SomeType> implements MyCollectionInterface{
     }
 
     @Override
-    public Iterator iterator() {
+    public Iterator<SomeType> iterator() {
         return mySet.iterator();
     }
 }

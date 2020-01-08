@@ -15,8 +15,8 @@ import java.util.Date;
 public class RemoveByIndex {
     //given
     private <SomeType> void test(int indexOfElementToRemove, SomeType[] valuesToBePopulatedWith, SomeType[] expectedElementSequence) {
-        MyArrayList<SomeType> myList = new MyArrayList<>(valuesToBePopulatedWith);
-        MyCollectionInterface<SomeType> myCollection = (MyCollectionInterface<SomeType>) new MyArrayList<>();
+        MyArrayList<SomeType> myList = new MyArrayList<>();
+        MyCollectionInterface<SomeType> myCollection = (MyCollectionInterface<SomeType>) myList;
 
         // given elements have been added to collection
         for (SomeType someValue : valuesToBePopulatedWith) {

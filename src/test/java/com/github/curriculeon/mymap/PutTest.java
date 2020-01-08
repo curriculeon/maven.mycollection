@@ -1,5 +1,6 @@
 package com.github.curriculeon.mymap;
 
+import com.github.curriculeon.KeyValue;
 import com.github.curriculeon.MyMap;
 import com.github.curriculeon.MyMapInterface;
 import org.junit.Assert;
