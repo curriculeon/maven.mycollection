@@ -64,11 +64,11 @@ public class RemoveByIndex {
 
     @Test
     public void test2() {
-        Date d1 = new Date();
-        Date d2 = new Date();
-        Date d3 = new Date();
-        Date[] valuesToPopulateCollection = new Date[]{d1,d2,d3};
-        Date[] expectedElementSequence = new Date[]{d1,d2};
+        Object d1 = new Object();
+        Object d2 = new Object();
+        Object d3 = new Object();
+        Object[] valuesToPopulateCollection = new Object[]{d1,d2,d3};
+        Object[] expectedElementSequence = new Object[]{d1,d2};
         int indexOfElementToRemove = 2;
         test(indexOfElementToRemove, valuesToPopulateCollection, expectedElementSequence);
     }

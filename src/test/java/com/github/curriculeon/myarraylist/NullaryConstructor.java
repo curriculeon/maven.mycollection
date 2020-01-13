@@ -21,7 +21,7 @@ public class NullaryConstructor {
         MyArrayList<?> myList = new MyArrayList<>();
 
         // when
-        Boolean isInstanceOfMySet = ((MySet)(Object)myList) instanceof MySet;
+        Boolean isInstanceOfMySet = (Object)myList instanceof MySet;
         Boolean isInstanceOfList = myList instanceof List;
         Boolean isInstanceOfCollection = myList instanceof Collection;
         Boolean isInstanceOfIterable = myList instanceof Iterable;
