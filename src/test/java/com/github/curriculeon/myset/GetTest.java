@@ -46,6 +46,6 @@ public class GetTest {
 
     @Test
     public void test2() {
-        test(new Date(), new Date(), new Date());
+        test(new Object(), new Object(), new Object());
     }
 }

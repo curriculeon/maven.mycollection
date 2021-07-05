@@ -8,6 +8,6 @@ public interface MyMapInterface<KeyType, ValueType> {
     ValueType get(KeyType key);
     Set<KeyType> getKeySet();
     List<ValueType> getValues();
-    Set<KeyValue<KeyType, ValueType>> getKeyValues();
+    Set<KeyValue<KeyType, ValueType>> getList();
     MyMapInterface<ValueType, KeyType> invert();
 }
